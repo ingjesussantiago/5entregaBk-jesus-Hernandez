@@ -20,6 +20,9 @@ export class managerProducto {
         }
     
         addProduct = async (producto) => {
+            if (!producto.title ||!producto.descripcion||!producto.code||!producto.price ||!producto.status||!producto.stock ||!producto.category) {
+               return "error. faltan campos obligatorios"
+            }
             const productos = await this.getProduct()
             const id = this.#generarId(productos)
             const nuevoProducto = { id, ...producto }

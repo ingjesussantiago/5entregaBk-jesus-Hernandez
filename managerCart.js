@@ -45,8 +45,7 @@ export class ManagerCart {
         const cart = await this.getCart(idCart)
         if (!cart) return "carrito no existe"
 
-        // validadcion de producto
-
+   
         const productoIndex = cart.productos.findIndex((p)=>p.producto===idProducto)
         if (productoIndex === -1) {
             cart.productos.push({ producto: idProducto, quantity: 1 })

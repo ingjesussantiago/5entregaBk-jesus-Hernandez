@@ -12,30 +12,30 @@ router.get("/", async (req, res) => {
     res.json({ productos })
 })
 
-router.post("/producto", async (req, res) => {
+router.post("/", async (req, res) => {
     const producto = req.body
     const nuevoProducto = await ManagerProducto.addProduct(producto)
     res.json({ message: "Prodcuto creado", producto: nuevoProducto })
 })
 
-router.get("/producto/:idProducto", async (req, res) => {
+router.get("/:idProducto", async (req, res) => {
     const { idProducto } = req.params
     const producto = await ManagerProducto.getProductoById(+idProducto)
     res.json({ producto })
 })
 
-router.delete("/producto", async (req, res) => {
+router.delete("/", async (req, res) => {
     const message = await ManagerProducto.delateProduct()
     res.json({ message })
 })
 
-router.delete("/producto/:idProducto", async (req, res) => {
+router.delete("/:idProducto", async (req, res) => {
     const { idProducto } = req.params
     const message = await ManagerProducto.delateProductById(+idProducto)
     res.json({ message })
 })
 
-router.put("/producto/:idProducto", async (req, res) => {
+router.put("/:idProducto", async (req, res) => {
     const { idProducto } = req.params
     const productoup = req.body
     const producto = await ManagerProducto.upDateProduc(+idProducto, productoup)
